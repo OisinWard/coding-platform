@@ -1,0 +1,11 @@
+---
+- name: Install python
+  hosts: 
+    all
+
+  tasks:
+  - name: Install python
+    package: 
+      name: python3
+      state: latest
+    become: true

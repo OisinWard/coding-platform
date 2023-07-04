@@ -1,0 +1,6 @@
+Host coding-platform
+	Hostname 192.168.33.11
+	User vagrant
+	UserKnownHostsFile /dev/null
+	ForwardAgent yes
+	StrictHostKeyChecking no
