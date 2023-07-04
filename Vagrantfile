@@ -1,9 +1,9 @@
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "generic/ubuntu2210"
+  config.vm.box = "generic/ubuntu2204"
 
   config.vm.provider "virtualbox" do |v|
-    v.gui = true
+    #v.gui = true
   end
 
   config.vm.boot_timeout = 900
@@ -26,5 +26,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "ansible/main.yml"
+    # ansible.verbose = "vvv"
   end
 end
