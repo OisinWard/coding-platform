@@ -15,9 +15,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", 
     source: "~/.ssh/id_rsa.pub", destination: "/home/vagrant/.ssh/id_rsa.pub"
   
-  config.vm.provision "file", 
-    source: "~/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
-
   script = <<-SCRIPT
     chmod 700 /home/vagrant/.ssh
     cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
