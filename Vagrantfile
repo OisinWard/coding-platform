@@ -12,6 +12,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "coding-platform"
 
+  config.vm.provision "file",
+    source: "~/.bashrc", destination: "/home/vagrant/.bashrc"
+
   config.vm.provision "file", 
     source: "~/.ssh/id_rsa.pub", destination: "/home/vagrant/.ssh/id_rsa.pub"
   
