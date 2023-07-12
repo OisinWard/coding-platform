@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
     chmod 700 /home/vagrant/.ssh
     cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
     chmod -R 600 /home/vagrant/.ssh/authorized_keys
+    echo "source /home/vagrant/.token_file" >> /home/vagrant/.bashrc
   SCRIPT
 
   config.vm.provision "shell",

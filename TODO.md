@@ -4,6 +4,4 @@
 
 # Copy over or create bashrc
 
-# Use aws mfa
-
-https://github.com/asagage/aws-mfa-script/blob/master/mfa.sh
+# Need to install aws cli as a dependency
