@@ -11,3 +11,5 @@
       tags: docker_install
     - role: config_git
       tags: config_git
+    - role: aws_cli_install
+      tags: aws_cli_install

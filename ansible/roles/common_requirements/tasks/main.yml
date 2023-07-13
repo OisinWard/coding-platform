@@ -3,26 +3,3 @@
   apt:
     name: aptitude
     state: latest
-
-- name: Create aws dir
-  file:
-    path: "{{ aws_install_dir }}"
-    state: directory
-
-- name: Download awscli package
-  get_url:
-    url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
-    dest: "{{ aws_install_dir }}/awscliv2.zip"
-
-- name: Unzip awscli package
-  unarchive:
-    src: "{{ aws_install_dir }}/awscliv2.zip"
-    dest: "{{ aws_install_dir }}"
-    remote_src: yes
-
-- name: Install awscli
-  shell: |
-    cd {{ aws_install_dir }}/aws
-    sudo ./install
-  args:
-    creates: "/usr/local/bin/aws"
