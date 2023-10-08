@@ -1,0 +1,5 @@
+- name: Set bashrc configuration
+  ansible.builtin.template:
+    src: bashrc.j2
+    dest: /home/vagrant/.bashrc
+    mode: '0644'
