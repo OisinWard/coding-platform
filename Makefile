@@ -9,3 +9,6 @@ stop:
 
 provision:
 	vagrant provision
+
+ssh:
+	ssh coding-platform
