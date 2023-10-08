@@ -1,7 +1,5 @@
 # Have script to pull down all the repos I want
 
-# Copy over or create bashrc
+# Install percona toolkit and mysql random data load as well as other mysql tools
 
-Copy over doesn't work properly need to template it out
-
-# Need to install terraform
+# Add scripts to handle ssh config
