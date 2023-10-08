@@ -1,0 +1,19 @@
+---
+- name: Add vagrant GPG apt Key
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+
+- name: Add the vagrant repository
+  apt_repository:
+    repo: 'deb https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main'
+    state: present
+
+- name: Install terraform
+  apt:
+    name: terraform
+    state: present
+    update_cache: true
+
+- name: Install terraform autocomplete
+  shell: terraform -install-autocomplete
