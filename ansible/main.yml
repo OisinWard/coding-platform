@@ -9,7 +9,11 @@
       tags: common_requirements
     - role: docker_install
       tags: docker_install
-    - role: config_git
-      tags: config_git
+    - role: git_config
+      tags: git_config
     - role: aws_cli_install
       tags: aws_cli_install
+    - role: bashrc_config
+      tags: bashrc_config
+    - role: terraform_install
+      tags: terraform_install
