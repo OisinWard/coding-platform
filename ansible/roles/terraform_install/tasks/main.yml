@@ -17,3 +17,4 @@
 
 - name: Install terraform autocomplete
   shell: terraform -install-autocomplete
+  ignore_errors: yes
