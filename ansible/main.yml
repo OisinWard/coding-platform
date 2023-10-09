@@ -17,3 +17,5 @@
       tags: bashrc_config
     - role: terraform_install
       tags: terraform_install
+    - role: mysql_tools_install
+      tags: mysql_tools_install

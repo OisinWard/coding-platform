@@ -1,0 +1,56 @@
+---
+# https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install-linux-quick.html
+- name: Download MySQL APT config file
+  get_url:
+    url: https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
+    dest: /tmp/mysql-apt-config_0.8.26-1_all.deb
+    headers:
+      User-Agent: "Mozilla/5.0 (compatible; Ansible)"
+
+- name: Add the Docker repository
+  apt:
+    deb: /tmp/mysql-apt-config_0.8.26-1_all.deb
+
+- name: Install mysql-apt-config
+  ansible.builtin.apt:
+    name: mysql-apt-config
+    update_cache: yes
+
+- name: Install mysql-client
+  ansible.builtin.apt:
+    name: mysql-client
+
+- name: Install mysql-shell
+  ansible.builtin.apt:
+    name: mysql-shell
+
+- name: Install percona-toolkit
+  ansible.builtin.apt:
+    name: percona-toolkit
+
+- name: Create a directory for MySQL Random Data Loader
+  file:
+    path: /usr/local/bin/
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Download MySQL Random Data Loader tarball
+  get_url:
+    url: https://github.com/Percona-Lab/mysql_random_data_load/releases/download/v0.1.12/mysql_random_data_load_0.1.12_Linux_x86_64.tar.gz
+    dest: /tmp/mysql_random_data_load_0.1.12_Linux_x86_64.tar.gz
+
+- name: Extract MySQL Random Data Loader tarball
+  ansible.builtin.unarchive:
+    src: /tmp/mysql_random_data_load_0.1.12_Linux_x86_64.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+    creates: /usr/local/bin/mysql_random_data_load_0.1.12_Linux_x86_64/
+
+- name: Make MySQL Random Data Loader executable
+  file:
+    path: /usr/local/bin/mysql_random_data_load
+    mode: '+x'
+    owner: root
+    group: root
