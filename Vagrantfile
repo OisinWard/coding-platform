@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "generic/ubuntu2204"
 
   config.vm.provider "virtualbox" do |v|
-    #v.gui = true
+#    v.gui = true
   end
 
   config.vm.boot_timeout = 900
