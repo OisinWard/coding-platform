@@ -4,3 +4,4 @@
 - import_tasks: add_repo.yml
 - import_tasks: install_docker.yml
 - import_tasks: install_docker_python_module.yml
+- import_tasks: add_user_to_docker_group.yml
