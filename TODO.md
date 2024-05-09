@@ -5,32 +5,45 @@
 # Laravel setup install the following in ansible and docker compose
 
 ```
-sudo docker network create laravel-network
+version: '3.8'
 
-sudo docker volume create --name mysql_data
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_USER: bn_myapp
+      MYSQL_PASSWORD: bn_myapp
+      MYSQL_DATABASE: bitnami_myapp
+    volumes:
+      - mysql_data:/bitnami/mysql
+    networks:
+      - laravel-network
 
-sudo docker run -d --name mysql \
-  --env MYSQL_USER=bn_myapp \
-  --env MYSQL_PASSWORD=bn_myapp \
-  --env MYSQL_DATABASE=bitnami_myapp \
-  --network laravel-network \
-  --volume mysql_data:/bitnami/mysql \
-  mysql:latest
+  laravel:
+    image: bitnami/laravel:latest
+    container_name: laravel
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: bn_myapp
+      DB_PASSWORD: bn_myapp
+      DB_DATABASE: bitnami_myapp
+    volumes:
+      - ./my-project:/app
+    depends_on:
+      - mysql
+    networks:
+      - laravel-network
 
+volumes:
+  mysql_data:
 
-sudo docker run -d --name laravel \
-  -p 8000:8000 \
-  --env DB_HOST=mysql \
-  --env DB_PORT=3306 \
-  --env DB_USERNAME=bn_myapp \
-  --env DB_PASSWORD=bn_myapp \
-  --env DB_DATABASE=bitnami_myapp \
-  --network laravel-network \
-  --volume ${PWD}/my-project:/app \
-  bitnami/laravel:latest
-
-sudo docker exec -it laravel php artisan migrate
-
+networks:
+  laravel-network:
+    driver: bridge
 ```
 
 # Configure docker so that sudo doesn't need to be used 
