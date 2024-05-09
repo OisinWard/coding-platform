@@ -1,0 +1,9 @@
+- name: Template over docker compose file for laravel
+  template:
+    src: docker-compose.yml.j2
+    dest: /home/vagrant/docker-compose.yml
+    mode: '0644'
+
+- name: Run docker compose for laravel
+  community.docker.docker_compose_v2:
+    project_src: /home/vagrant/

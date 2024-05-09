@@ -19,3 +19,5 @@
       tags: terraform_install
     - role: mysql_tools_install
       tags: mysql_tools_install
+    - role: laravel_install
+      tags: laravel_install 
