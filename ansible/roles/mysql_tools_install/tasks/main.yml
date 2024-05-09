@@ -4,6 +4,8 @@
     curl -s https://dev.mysql.com/downloads/repo/apt/ |
     grep -oP 'mysql-apt-config_\d+\.\d+\.\d+-\d+_all.deb' |
     head -n 1
+  args:
+    warn: false
   register: mysql_repo_filename
   changed_when: false
 
