@@ -19,3 +19,5 @@ rm-hard: rm
 	rm -rf ~/.vagrant.d/
 
 rebuild-hard: rm-hard up
+
+restart: stop up
