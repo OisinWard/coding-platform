@@ -2,8 +2,9 @@
 
 # Add scripts to handle ssh config
 
-# Alias composer in bashrc
+# Alias composer and php in bashrc
 
 ```
-alias composer="docker container exec laravel composer '$@'"
+alias composer='docker container exec laravel composer "$@"'
+alias php='docker exec laravel php "$@"'
 ```
