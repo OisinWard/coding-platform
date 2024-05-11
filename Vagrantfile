@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
 #    v.gui = true
   end
 
-  config.vm.boot_timeout = 900
+  config.vm.boot_timeout = 1000
 
   config.vm.network "private_network", ip: "192.168.33.11"
 
