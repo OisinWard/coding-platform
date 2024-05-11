@@ -8,6 +8,7 @@ services:
       MYSQL_USER: bn_myapp
       MYSQL_PASSWORD: bn_myapp
       MYSQL_DATABASE: bitnami_myapp
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
     volumes:
       - mysql_data:/bitnami/mysql
     networks:
