@@ -12,6 +12,17 @@ services:
     networks:
       - laravel-network
 
+  redis:
+    image: redis:latest
+    container_name: redis
+    hostname: redis
+    environment:
+      redis-server: /usr/local/etc/redis/redis.conf
+    volumes:
+      - redis_data:/usr/local/etc/redis
+    networks:
+       - laravel-network
+
   laravel:
     image: bitnami/laravel:latest
     container_name: laravel
@@ -23,15 +34,20 @@ services:
       DB_USERNAME: bn_myapp
       DB_PASSWORD: bn_myapp
       DB_DATABASE: bitnami_myapp
+      REDIS_HOST: redis
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
     volumes:
       - ./my-project:/app
     depends_on:
       - mysql
+      - redis
     networks:
       - laravel-network
 
 volumes:
   mysql_data:
+  redis_data:
 
 networks:
   laravel-network:
