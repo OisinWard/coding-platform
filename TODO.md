@@ -5,5 +5,5 @@
 # Adding redis
 
 ```
-docker run -v /myredis/conf:/usr/local/etc/redis --name myredis redis redis-server /usr/local/etc/redis/redis.conf
+docker run -d -v /myredis/conf:/usr/local/etc/redis --network vagrant_laravel-network --publish=6379:6379 --hostname=redis --name redis redis redis-server /usr/local/etc/redis/redis.conf
 ```
